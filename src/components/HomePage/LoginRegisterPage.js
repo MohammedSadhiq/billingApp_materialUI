@@ -45,7 +45,7 @@ const LoginRegisterPage = (props) => {
                         <TabContext value={value}>
                         <TabList
                             value={value}
-                            onChange = {handleChange}
+                                onChange = {handleChange}
                             indicatorColor="primary"
                             textColor="primary"
                             variant='fullWidth'
