@@ -50,7 +50,7 @@ To generate a new bill, we will fill in the details of the customer and all the 
 ![New Bill Page](https://user-images.githubusercontent.com/70807417/120588609-19db5180-c455-11eb-96c8-f638559f46e0.png)
 
 ### Invoice Page
-Here user can download the bill in PDF format.
+Here user can download the bill in PDF formats.
 ![Bill View Page](https://user-images.githubusercontent.com/70807417/120588675-36778980-c455-11eb-8b26-a338d8b20ea3.png)
 
 ### PDF format of Bill
@@ -58,3 +58,4 @@ Here user can download the bill in PDF format.
 
 ## Libraries and Utilities
 React, Redux, react-router-dom, react-redux, redux-thunk, react-google-charts, moment, axios, material UI, validator
+git push origin +dd61ab32^:master
