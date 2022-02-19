@@ -9,12 +9,12 @@ const customerReducer = (state = initialCustomerState,action)=>{
             return [...state, action.payload]
         }
         case 'DELETE_CUSTOMER':{
-            return state.filter(cust=>cust_id!==action.payload._id)
+            return state.filter(cust=>cust._id!==action.payload._id)
         }
         case 'UPDATE_CUSTOMER':{
             const data = action.payload;
             return state.map(cust=>{
-                if(data._id==cust._id){
+                if(data._id===cust._id){
                     return data
                 }
                 else{

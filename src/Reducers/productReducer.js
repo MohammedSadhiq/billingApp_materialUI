@@ -20,7 +20,7 @@ const productReducer = (state = initialProductState,action)=>{
         }
         case 'DELETE_PRODUCT':{
             return state.filter(prod=>{
-                return prod_id!==action.payload._id
+                return prod._id!==action.payload._id
             })
         }
         default:{
