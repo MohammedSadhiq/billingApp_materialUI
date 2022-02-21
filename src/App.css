@@ -36,3 +36,41 @@
     transform: rotate(360deg);
   }
 }
+
+
+.header {
+  margin : 0;
+  border-bottom : 2px solid #27a75c;
+  position : fixed;
+  top:0%;
+  width  : 100%;
+  z-index: 0;
+}
+
+.homepage-appbar{
+  display: flex;
+  width: 100%;
+  margin:10px;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.homepage-appbar h1{
+  margin : 5px 0 0 10px;
+  color: #27a75c;
+}
+
+.homepage-appbar ul {
+  display: flex;
+}
+
+.homepage-appbar ul li {
+  list-style-type: none;
+  margin-right: 30px;
+}
+
+.homepage-appbar a {
+  text-decoration: none;
+  color: #27a75c;
+  font-weight: bold;
+}

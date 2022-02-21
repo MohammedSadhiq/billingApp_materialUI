@@ -11,7 +11,7 @@ const loginReducer =  (state= initialLoginState,actions)=>{
         default :{
             return state
         }
-    }
+    }   
 }
 
 export default loginReducer
