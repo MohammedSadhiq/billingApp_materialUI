@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import { createTheme, ThemeProvider} from '@material-ui/core/styles';
+import { ThemeProvider} from '@material-ui/core/styles';
+import { createTheme } from '@mui/material/styles';
+import { red } from '@mui/material/colors';
 import Navbar from './components/Navbar/Navbar.js'
 
 const theme = createTheme({
@@ -11,9 +13,9 @@ const theme = createTheme({
     fontWeightMedium : '500',
     fontWeightBold : '700'
   },
-  pallette:{
+  palette:{
     primary:{
-      main:'#27a75c'
+      main: '#27a75c'
     },
     secondary:{
       main: '#f70074'

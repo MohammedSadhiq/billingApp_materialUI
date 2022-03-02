@@ -20,6 +20,8 @@ export const setUser = (data)=>{
 
 export const asyncGetUser = ()=>{
 
+  console.log('config in user',config)
+
     return (dispatch)=>{
         axios.get(url,config).then(response=>{
             const data = response.data;

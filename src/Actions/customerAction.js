@@ -64,7 +64,7 @@ export const asyncGetCustomers =()=>{
                 Authorization : `Bearer ${token}`
             }
         }
-        axios.get(url,confign).then(response=>{
+        axios.get(url,config).then(response=>{
             const data = response.data;
             dispatch(setCustomers(data))
         }).catch(err=>alert(err.message))
@@ -92,11 +92,18 @@ export const asyncAddCustomer= (data,reset,closeModel)=>{
 }
 
 export const asyncDeleteCustomer=(id)=>{
-    return(dispatch)=>{
-        axios.delete(`${url}/${id}`,data,config).then(response=>{
-            const data  = response.data;
-            dispatch(deleteCustomer(data))
-            
-        }).catch(err=>alert(err.message))     
+    return (dispatch) => {
+        const token = localStorage.getItem('token')
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+        axios.delete(`${url}/${id}`, config)
+            .then(response => {
+                const data = response.data
+                dispatch(deleteCustomer(data))
+            })
+            .catch(err => alert(err.message))
     }
 }

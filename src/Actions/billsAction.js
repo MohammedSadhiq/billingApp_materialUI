@@ -28,7 +28,7 @@ export const asyncGetBills =()=>{
     return(dispatch) =>{
         const token = localStorage.getItem('token');
         const config = {
-            header:{
+            headers:{
                 Authorization : `Bearer ${token}`
             }
         }
@@ -36,16 +36,18 @@ export const asyncGetBills =()=>{
             const data = response.data;
             dispatch(setBills(data));
         }).catch(err=>{
+            console.log('err in bills',err)
             alert(err.message)
         })
     }
+    
 }
 
 export const asyncAddBill =(data,history) =>{
     return(dispatch)=>{
         const token = localStorage.getItem('token');
         const config ={
-            header:{
+            headers:{
                 Authorization:`Bearer ${token}`
             }
         }
