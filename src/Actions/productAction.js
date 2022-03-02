@@ -39,7 +39,8 @@ export const deleteProduct = (data) =>{
     }
 }
 
-export const asynGetProducts =()=>{
+export const asyncGetProducts =()=>{
+  console.log('config in product',config)
     return(dispatch)=>{
         axios.get(url,config).then(response=>{
             const data = response.data;

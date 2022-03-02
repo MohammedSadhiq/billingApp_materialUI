@@ -15,7 +15,7 @@ export const setLogout = () =>{
     }
 }
 
-export const ayncLogin = (data,history,notify)=>{
+export const asyncLogin = (data,history,notify)=>{
     return (dispatch)=>{
         const url = 'https://dct-billing-app.herokuapp.com/api/users/login';
         axios.post(url,data).then(response=>{
@@ -30,6 +30,7 @@ export const ayncLogin = (data,history,notify)=>{
                 notify(notifyErrors)
             }
         }).catch(err =>{
+            console.log('error in login',err)
             alert(`${err.message}-${err.statusCode}`)
         })
     }
