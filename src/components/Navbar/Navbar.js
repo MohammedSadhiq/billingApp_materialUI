@@ -7,6 +7,8 @@ import Drawer from './Drawer';
 import HomePage from '../HomePage/HomePage';
 import LoginRegisterPage from '../HomePage/LoginRegisterPage';
 import PrivateRoute from './PrivateRoute'
+import CustomerPage from '../customerPage/CustomerPage';
+import ViewCustomer from '../customerPage/ViewCustomer/ViewCustomer';
 
 function Navbar(props) {
 
@@ -32,7 +34,9 @@ function Navbar(props) {
         <Route path ='/login-or-register' 
         render = {(props)=>{return isLoggedIn ?   <Redirect to='/user' /> : <LoginRegisterPage {...props}/>}}
         />
-       
+
+        <PrivateRoute path='/customers' component = {CustomerPage} exact={true} />
+        <PrivateRoute path='/customers/:id' component={ViewCustomer} exact={true} />
         
     </div>
   )

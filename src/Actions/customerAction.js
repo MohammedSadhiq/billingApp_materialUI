@@ -37,7 +37,7 @@ export const updateCustomer =(data)=>{
     }
 }
 
-export const asyncCustomerDetails = (id, handleChang)=>{
+export const asyncCustomerDetails = (id, handleChange)=>{
     return(dispatch)=>{
 
         const token = localStorage.getItem('token');
@@ -48,8 +48,9 @@ export const asyncCustomerDetails = (id, handleChang)=>{
         }
 
         axios.get(`${url}/${id}`,config).then(response=>{
+            console.log('data in async customer details',response.data,id)
             const data = response.data;
-            handleChang(data)
+            handleChange(data)
         })
         .catch(err=>{alert(err.message)})
 
@@ -105,5 +106,24 @@ export const asyncDeleteCustomer=(id)=>{
                 dispatch(deleteCustomer(data))
             })
             .catch(err => alert(err.message))
+    }
+}
+
+export const asyncUpdateCustomer =(id,data,reset) =>{
+    return(dispatch)=>{
+        const token= localStorage.getItem('token');
+        const config={
+            headers:{
+            Authorization : `Bearer ${token}`
+        }
+    }
+
+    axios.put(`${url}/${id}`,data,config).then(response=>{
+        const data = response.data;
+        dispatch(updateCustomer(data));
+        reset();
+    }).catch(err=>{
+        alert(err.message)
+    })
     }
 }
