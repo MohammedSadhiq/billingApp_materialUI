@@ -8,9 +8,11 @@ import HomePage from '../HomePage/HomePage';
 import LoginRegisterPage from '../HomePage/LoginRegisterPage';
 import PrivateRoute from './PrivateRoute'
 
+import ProductPage from '../ProductPage/ProductPage';
+
 function Navbar(props) {
 
-    const isLoggedIn = useSelector(state=>state.login)
+    const isLoggedIn = useSelector(state=>state.login);
     const dispatch = useDispatch();
 
     useEffect(()=>{
@@ -32,7 +34,9 @@ function Navbar(props) {
         <Route path ='/login-or-register' 
         render = {(props)=>{return isLoggedIn ?   <Redirect to='/user' /> : <LoginRegisterPage {...props}/>}}
         />
-       
+
+      
+        <PrivateRoute path='/products' component={ProductPage} exact={true} />
         
     </div>
   )

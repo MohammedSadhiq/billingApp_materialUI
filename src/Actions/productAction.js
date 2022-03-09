@@ -51,17 +51,27 @@ export const asyncGetProducts =()=>{
 
 export const asyncAddProducts = (data,reset)=>{
     return(dispatch)=>{
+        console.log('adding product')
         axios.post(url,data,config).then(response=>{
             const data = response.data;
+            console.log('products added', response.data)
             dispatch(addProduct(data))
             reset()
         }).catch(err=>alert(err.message))
     }
 }
 
-export const asynUpdateProducts = (id,data,reset) =>{
+export const asyncUpdateProducts = (id,data,reset) =>{
     return(dispatch)=>{
-        axios.put(`${url}/${id}`,config).then(response=>{
+        const token = localStorage.getItem('token');
+
+const config = {
+    headers:{
+        Authorization : `Bearer ${token}`
+    }
+}
+        axios.put(`${url}/${id}`,data,config)
+        .then(response=>{
             const data = response.data;
             dispatch(updateProduct(data));
             reset()

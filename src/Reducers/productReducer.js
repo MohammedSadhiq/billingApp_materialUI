@@ -10,7 +10,7 @@ const productReducer = (state = initialProductState,action)=>{
         }
         case 'UPDATE_PRODUCT':{
             return state.map(prod=>{
-                if(prod._id !==action.payload._id){
+                if(prod._id ===action.payload._id){
                     return action.payload
                 }
                 else{
