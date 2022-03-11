@@ -40,6 +40,16 @@ export const deleteProduct = (data) =>{
 }
 
 export const asyncGetProducts =()=>{
+
+    const token = localStorage.getItem('token');
+
+    const config = {
+        headers:{
+            Authorization : `Bearer ${token}`
+        }
+    }
+
+
   console.log('config in product',config)
     return(dispatch)=>{
         axios.get(url,config).then(response=>{
@@ -50,6 +60,16 @@ export const asyncGetProducts =()=>{
 }
 
 export const asyncAddProducts = (data,reset)=>{
+
+    const token = localStorage.getItem('token');
+
+    const config = {
+        headers:{
+            Authorization : `Bearer ${token}`
+        }
+    }
+
+
     return(dispatch)=>{
         axios.post(url,data,config).then(response=>{
             const data = response.data;
@@ -60,6 +80,16 @@ export const asyncAddProducts = (data,reset)=>{
 }
 
 export const asynUpdateProducts = (id,data,reset) =>{
+
+    const token = localStorage.getItem('token');
+
+    const config = {
+        headers:{
+            Authorization : `Bearer ${token}`
+        }
+    }
+
+
     return(dispatch)=>{
         axios.put(`${url}/${id}`,config).then(response=>{
             const data = response.data;
@@ -70,6 +100,17 @@ export const asynUpdateProducts = (id,data,reset) =>{
 }
 
 export const asyncDeleteProducts = (id) =>{
+
+
+    const token = localStorage.getItem('token');
+
+    const config = {
+        headers:{
+            Authorization : `Bearer ${token}`
+        }
+    }
+
+
     return(dispatch)=>{
         axios.delete(`${url}/${id}`,config).then(response=>{
             const data = response.data;
@@ -80,6 +121,16 @@ export const asyncDeleteProducts = (id) =>{
 }
 
 export const asyncProductDetail = (id, stateChange) =>{
+
+    const token = localStorage.getItem('token');
+
+    const config = {
+        headers:{
+            Authorization : `Bearer ${token}`
+        }
+    }
+
+
     return(dispatch)=>{
         axios.get(`${url}/${id}`,config).then(response=>{
             const data = response.data;

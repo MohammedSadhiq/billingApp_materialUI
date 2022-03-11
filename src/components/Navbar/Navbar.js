@@ -7,6 +7,9 @@ import Drawer from './Drawer';
 import HomePage from '../HomePage/HomePage';
 import LoginRegisterPage from '../HomePage/LoginRegisterPage';
 import PrivateRoute from './PrivateRoute'
+import BillsPage from '../BillsPage/BillsPage';
+import BillView from '../BillsPage/viewBill/BillView';
+import AddBill from '../BillsPage/generateBill/AddBill';
 
 function Navbar(props) {
 
@@ -33,6 +36,10 @@ function Navbar(props) {
         render = {(props)=>{return isLoggedIn ?   <Redirect to='/user' /> : <LoginRegisterPage {...props}/>}}
         />
        
+       <PrivateRoute path='/bills' component={BillsPage} exact={true} />
+       <PrivateRoute path='/bills/:id' component={BillView} exact={true}/>
+       <PrivateRoute path='/addBill' component={AddBill} exact={true} />
+
         
     </div>
   )

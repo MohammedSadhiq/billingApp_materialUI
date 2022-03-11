@@ -84,9 +84,18 @@ export const asyncGetBillDetails = (id, handleChange) =>{
             }
         }
 
-        axios.get(`${url}/${id}`, config).then(response =>{
-            const data = response.data;
-            handleChange(data);
-        }).catch(err=>alert(err.message))
+        // axios.get(`${url}/${id}`, config).then(response =>{
+        //     const data = response.data;
+        //         console.log('response in getBillDetails',data)
+        //     handleChange(data);
+        // }).catch(err=>alert(err.message))
+        axios.get(`${url}/${id}`, config)
+            .then(response => {
+                const data = response.data;
+                console.log('data in asyncGetBillDetails',data);
+                handleChange(data)
+            })
+            .catch(err => alert(err.message))
+
     }
-}
+}   
