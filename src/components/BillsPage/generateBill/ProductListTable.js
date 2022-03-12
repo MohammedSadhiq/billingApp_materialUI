@@ -16,7 +16,7 @@ const useStyle = makeStyles({
 
 function ProductListTable(props) {
 
-    const {items,handleChangeQuantity,handleRemoveLineItem} = props;
+    const {lineItems,handleChangeQuantity,handleRemoveLineItem} = props;
     const classes = useStyle();
 
     const calculateTotal = (data) =>{
@@ -28,12 +28,12 @@ function ProductListTable(props) {
 
     }
 
-    console.log('items in productListTable',items.length);
+    console.log('items in productListTable',lineItems.length);
 
   return (
     <Container>
         {
-            items.length > 0 && (
+            lineItems.length > 0 && (
             <TableContainer>
                 <Table>
                     <TableHead>
@@ -48,7 +48,7 @@ function ProductListTable(props) {
                     </TableHead>
                     <TableBody>
                         {
-                            items.map((product,index)=>{
+                            lineItems.map((product,index)=>{
                                 return(<TableRow key={product._id}>
                                     <TableCell>{index+1}</TableCell>
                                     <TableCell>{product.name}</TableCell>
@@ -92,7 +92,7 @@ function ProductListTable(props) {
                             <TableCell></TableCell>
                             <TableCell></TableCell>
                             <TableCell className={classes.tableHeaderFooter}>Total Amount</TableCell>
-                            <TableCell className={classes.tableHeaderFooter}>{calculateTotal(items)}</TableCell>
+                            <TableCell className={classes.tableHeaderFooter}>{calculateTotal(lineItems)}</TableCell>
                         </TableRow>
                     </TableFooter>
                 </Table>
