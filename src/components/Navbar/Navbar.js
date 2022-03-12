@@ -7,6 +7,7 @@ import Drawer from './Drawer';
 import HomePage from '../HomePage/HomePage';
 import LoginRegisterPage from '../HomePage/LoginRegisterPage';
 import PrivateRoute from './PrivateRoute'
+import Dashboard from '../Dashboard/Dashboard';
 
 function Navbar(props) {
 
@@ -33,7 +34,7 @@ function Navbar(props) {
         render = {(props)=>{return isLoggedIn ?   <Redirect to='/user' /> : <LoginRegisterPage {...props}/>}}
         />
        
-        
+        <PrivateRoute path='/dashboard' component ={Dashboard} exact={true} />
     </div>
   )
 }
