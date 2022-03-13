@@ -14,12 +14,9 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.26.0",
-<<<<<<< HEAD
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.5.23",
     "lodash.debounce": "^4.0.8",
-=======
->>>>>>> feature-customer
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

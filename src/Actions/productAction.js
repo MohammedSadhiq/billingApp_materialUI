@@ -81,7 +81,6 @@ export const asyncAddProducts = (data,reset)=>{
     }
 }
 
-<<<<<<< HEAD
 export const asynUpdateProducts = (id,data,reset) =>{
 
     const token = localStorage.getItem('token');
@@ -93,9 +92,7 @@ export const asynUpdateProducts = (id,data,reset) =>{
     }
 
 
-=======
 export const asyncUpdateProducts = (id,data,reset) =>{
->>>>>>> feature-product
     return(dispatch)=>{
         const token = localStorage.getItem('token');
 
@@ -152,4 +149,5 @@ export const asyncProductDetail = (id, stateChange) =>{
 
         }).catch(err=>alert(err.message))
     }
+
 }
