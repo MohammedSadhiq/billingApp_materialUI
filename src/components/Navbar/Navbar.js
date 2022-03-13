@@ -12,9 +12,11 @@ import BillView from '../BillsPage/viewBill/BillView';
 import AddBill from '../BillsPage/generateBill/AddBill';
 import UserPage from '../userPage/UserPage';
 
+import ProductPage from '../ProductPage/ProductPage';
+
 function Navbar(props) {
 
-    const isLoggedIn = useSelector(state=>state.login)
+    const isLoggedIn = useSelector(state=>state.login);
     const dispatch = useDispatch();
 
     useEffect(()=>{
@@ -41,6 +43,9 @@ function Navbar(props) {
        <PrivateRoute path='/bills/:id' component={BillView} exact={true}/>
        <PrivateRoute path='/addBill' component={AddBill} exact={true} />
 
+
+      
+        <PrivateRoute path='/products' component={ProductPage} exact={true} />
         
         <PrivateRoute path='/user' component={UserPage} exact={true}/>
     </div>
