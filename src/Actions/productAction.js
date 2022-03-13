@@ -81,15 +81,7 @@ export const asyncAddProducts = (data,reset)=>{
     }
 }
 
-export const asynUpdateProducts = (id,data,reset) =>{
 
-    const token = localStorage.getItem('token');
-
-    const config = {
-        headers:{
-            Authorization : `Bearer ${token}`
-        }
-    }
 
 
 export const asyncUpdateProducts = (id,data,reset) =>{
