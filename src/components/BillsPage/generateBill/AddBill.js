@@ -29,7 +29,7 @@ function AddBill() {
         setLineItems(newList)
     }
 
-    function handleCustomerInfo(value){
+    const handleCustomerInfo =(value)=>{
         setCustomerInfo(value)
     }
 
@@ -86,7 +86,7 @@ function AddBill() {
                     handleAddLineItems = {handleAddLineItems}
                 />
                  <ProductListTable
-                items={lineItems}
+                lineItems={lineItems}
                 handleChangeQuantity={handleChangeQuantity}
                 handleRemoveLineItem={handleRemoveLineItem}
             />
@@ -95,7 +95,7 @@ function AddBill() {
             <SummaryOfBill
                 customerInfo={customerInfo}
                 handleCustomerInfo={handleCustomerInfo}
-                items={lineItems}
+                lineItems={lineItems}
              />
         </Grid>
             </Grid>

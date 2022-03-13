@@ -55,6 +55,7 @@ export const asyncAddBill =(data,history) =>{
         axios.post(url,data,config).then(response =>{
             const data = response.data;
             dispatch(addBills(data));
+            console.log('bill added',data)
             history.push(`/bills/${data._id}`)
         }).catch(err=>alert(err.message))
     }
