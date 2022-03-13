@@ -10,6 +10,7 @@ import PrivateRoute from './PrivateRoute'
 import BillsPage from '../BillsPage/BillsPage';
 import BillView from '../BillsPage/viewBill/BillView';
 import AddBill from '../BillsPage/generateBill/AddBill';
+import UserPage from '../userPage/UserPage';
 
 function Navbar(props) {
 
@@ -41,6 +42,7 @@ function Navbar(props) {
        <PrivateRoute path='/addBill' component={AddBill} exact={true} />
 
         
+        <PrivateRoute path='/user' component={UserPage} exact={true}/>
     </div>
   )
 }
