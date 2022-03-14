@@ -14,6 +14,7 @@ function StatsItem(props) {
 
     // console.log('stats title',statsTitle);
     // console.log('stats Number',statsNumber);
+    
 
   return (
     <Grid  item lg={4} md={4} sm={4} xs={12}>

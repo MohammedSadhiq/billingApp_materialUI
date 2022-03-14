@@ -15,6 +15,7 @@ import UserPage from '../userPage/UserPage';
 import ProductPage from '../ProductPage/ProductPage';
 import CustomerPage from '../customerPage/CustomerPage';
 import ViewCustomer from '../customerPage/ViewCustomer/ViewCustomer';
+import Dashboard from '../Dashboard/Dashboard';
 
 function Navbar(props) {
 
@@ -53,6 +54,7 @@ function Navbar(props) {
         <PrivateRoute path='/customers/:id' component={ViewCustomer} exact={true} />
         
         <PrivateRoute path='/user' component={UserPage} exact={true}/>
+        <PrivateRoute path='/dashboard' component ={Dashboard} exact={true} />
     </div>
   )
 }
