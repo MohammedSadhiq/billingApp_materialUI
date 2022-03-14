@@ -1,9 +1,10 @@
 import { Button } from '@material-ui/core';
 import { GetAppOutlined } from '@material-ui/icons';
-import React from 'react'
+import React from 'react';
+import { jsPDF }  from 'jspdf';
+import "jspdf/dist/polyfills.es.js";
+import autoTable from 'jspdf-autotable';   
 import {useSelector} from 'react-redux';
-import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
 import moment from 'moment';
 
 function PrintBill(props) {
