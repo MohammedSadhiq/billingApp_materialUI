@@ -15,9 +15,15 @@ const useStyle = makeStyles({
 function StatsContainer(props) {
 
     const products = useSelector(state=>state.product);
-    const customer = useSelector(state=>state.customer);
+    const customer = useSelector(state=>state.customers);
     const bills = useSelector(state=>state.bills);
     const classes = useStyle();
+    const state = useSelector(state=>state);
+
+    console.log('state',state)
+    console.log('products in statsContainer',products);
+    console.log('customer in statsContainer',customer);
+    console.log('bills in statsContainer',bills)
 
     const todaysBill = bills.filter(bill=>moment(bill.createdAt).isBetween(moment().startOf('days'),moment()));
 
@@ -32,18 +38,23 @@ function StatsContainer(props) {
 
   return (
     <>
-        <Typography variant='h6' className={classes.statsHeader}>Overall Stats</Typography>
-        <Grid container spacing={6}>
-            <StatsItem statsTitle={'Total Customers'} statsNumber={customer.length}/>
-            <StatsItem statsTitle={'Total Products'} statsNumber={products.length}/>
-            <StatsItem statsTitle={'Total Orders'} statsNumber={bills.length}/>
-        </Grid>
-        <Typography vaiant='h6' className={classes.statsHeader}>Daily Stats</Typography>
-        <Grid container spacing={6}>
-            <StatsItem statsTitle={`Orders Received Today`} statsNumber={todaysBill.length}/>
-            <StatsItem statsTitle ={`Amount Received Today`} statsNumber={calculateTotal(todaysBill)}/>
-            <StatsItem statsTitle ={`Overall Amount`} statsNumber={calculateTotal(bills)}/>
-        </Grid>
+       {
+           (products.length>0 &&customer.length >0 && bills.length >0 )?
+            <Grid>
+            <Typography variant='h6' className={classes.statsHeader}>Overall Stats</Typography>
+            <Grid container spacing={6}>
+                <StatsItem statsTitle={'Total Customers'} statsNumber={customer.length}/>
+                <StatsItem statsTitle={'Total Products'} statsNumber={products.length}/>
+                <StatsItem statsTitle={'Total Orders'} statsNumber={bills.length}/>
+            </Grid>
+            <Typography vaiant='h6' className={classes.statsHeader}>Daily Stats</Typography>
+            <Grid container spacing={6}>
+                <StatsItem statsTitle={`Orders Received Today`} statsNumber={todaysBill.length}/>
+                <StatsItem statsTitle ={`Amount Received Today`} statsNumber={calculateTotal(todaysBill)}/>
+                <StatsItem statsTitle ={`Overall Amount`} statsNumber={calculateTotal(bills)}/>
+            </Grid>
+           </Grid>:(<div>Loading</div>)
+       }
     </>
   )
 }

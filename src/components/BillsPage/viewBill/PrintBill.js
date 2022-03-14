@@ -12,7 +12,7 @@ function PrintBill(props) {
 
     console.log('id in print table', id)
 
-    const products = useSelector(state=>state.product);
+    const products = useSelector(state=>state.products);
 
     const getProductName = (id)=>{
         const product = products.find(item => item._id === id);

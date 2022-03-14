@@ -15,7 +15,7 @@ const useStyle = makeStyles({
 function ViewOrderTable(props) {
 
   const {lineItems,total} = props;
-  const products = useSelector(state=>state.product);
+  const products = useSelector(state=>state.products);
   const classes = useStyle();
 
  const getProductName=(id)=>{

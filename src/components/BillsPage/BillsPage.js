@@ -34,7 +34,7 @@ const useStyle = makeStyles({
 function BillsPage() {
 
     const [search,setSearch]  = useState('');
-    const customers = useSelector(state=>state.customer);
+    const customers = useSelector(state=>state.customers);
     const bills = useSelector(state=>state.bills);
     const classes = useStyle();
     const [allBills,setAllBills] = useState(bills);

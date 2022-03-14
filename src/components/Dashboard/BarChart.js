@@ -4,8 +4,8 @@ import Chart from 'react-google-charts';
 
 function BarChart() {
 
-    const bills = useSelector(state=>state.bills);
-    const customers  = useSelector(state=>state.customer);
+    const bills = (state=>state.bills);
+    const customers  = useSelector(state=>state.customers);
     const products = useSelector(state=>state.product);
 
     const charData = [['Customers',customers.length],['Products',products.length],['Bills',bills.length]]

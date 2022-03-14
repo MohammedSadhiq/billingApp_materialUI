@@ -23,7 +23,7 @@ function BillsTable(props) {
 
     const {bills,resetSearch } = props;
     const dispatch = useDispatch();
-    const customers = useSelector(state=>state.customer)
+    const customers = useSelector(state=>state.customers)
     const classes = useStyle();
 
     const handleDelete =(id)=>{
@@ -41,6 +41,8 @@ function BillsTable(props) {
         }
     }
 
+    
+
   return (
     <TableContainer className = {classes.table} >
         <Table stickyHeader  size='small'>
@@ -54,7 +56,7 @@ function BillsTable(props) {
                 </TableRow>
             </TableHead>
             <TableBody>
-                    {
+                    { (customers?.length>0)?(  <>{
                         bills.map((bill,index)=>{
                             return (<TableRow key={index}>
                                 <TableCell>{index+1}</TableCell>
@@ -81,7 +83,8 @@ function BillsTable(props) {
                                     </Box>    
                                 </TableCell>
                             </TableRow>)
-                        })
+                        })}
+                        </>):(<div>loading</div>)
                     }
             </TableBody>
         </Table>

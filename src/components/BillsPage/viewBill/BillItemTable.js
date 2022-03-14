@@ -17,7 +17,7 @@ function BillItemTable(props) {
 
     const {items,total} = props;
     const classes = useStyle();
-    const products = useSelector(state=>state.product);
+    const products = useSelector(state=>state.products);
 
     const getProductName=(id)=>{
         const selectedProduct = products.find(prod=>prod._id===id)

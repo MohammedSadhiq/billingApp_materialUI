@@ -6,7 +6,7 @@ import {TextField,Box,Typography} from '@material-ui/core';
 function CustomerSuggestion(props) { 
  
   const {handleCustomerInfo} = props;
-  const customers = useSelector(state=>state.customer);
+  const customers = useSelector(state=>state.customers);
   const [value,setValue] = useState({});
   const [inputValue,setInputValue] = useState('');
 
