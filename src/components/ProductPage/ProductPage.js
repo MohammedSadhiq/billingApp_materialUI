@@ -92,7 +92,7 @@ function ProductPage() {
 
   return (
     <Container className={classes.container}>
-        <Container disablegutters>
+        <Container disableGutters>
             <Typography className={classes.title} variant='h5'>Products</Typography>
             {
                 

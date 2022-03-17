@@ -9,7 +9,7 @@ function ProductSuggestion(props) {
     const {handleAddLineItems} = props;
     const [value,setValue] = useState({});
     const [inputValue,setInputValue] = useState('');
-    const products = useSelector(state=>state.products);
+    const products = useSelector(state=>state.product);
 
     console.log('product in add bill', products )
 

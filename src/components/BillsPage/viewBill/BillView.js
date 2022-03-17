@@ -26,9 +26,11 @@ function BillView(props) {
     const classes = useStyle();
     const dispatch = useDispatch();
     const {id} = props.match.params;
-    const customers = useSelector(state=>state.customer);
+    const customers = useSelector(state=>state.customers);
+    const state = useSelector(state=>state);
 
     console.log('params',props.match.params)
+    console.log('state',state);
 
     const getCustomerDetail = useCallback((id)=>{
         
@@ -44,7 +46,7 @@ function BillView(props) {
     },[customers])   
 
     const handleBillDetails = useCallback((data)=>{
-        
+
         console.log('handle bill running',data);
         setBillDetails(data);
         if(data.customer){

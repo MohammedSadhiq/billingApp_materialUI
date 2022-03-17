@@ -33,7 +33,7 @@ function SummaryOfBill(props) {
             alert('select the products to be billes')
         }
 
-        if(Object.keys(customerInfo).length <= 0){
+        else if(Object.keys(customerInfo).length <= 0){
             alert('select the customer to be billed for')
         }
 
