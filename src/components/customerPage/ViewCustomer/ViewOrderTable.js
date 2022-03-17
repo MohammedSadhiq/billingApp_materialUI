@@ -15,7 +15,7 @@ const useStyle = makeStyles({
 function ViewOrderTable(props) {
 
   const {lineItems,total} = props;
-  const products = useSelector(state=>state.products);
+  const products = useSelector(state=>state.product);
   const classes = useStyle();
 
  const getProductName=(id)=>{
@@ -39,15 +39,17 @@ function ViewOrderTable(props) {
         </TableHead>
         <TableBody>
           {
-            lineItems.map((list,index)=>{
-              return(<TableRow key={list._id}>
-                <TableCell>{index+1}</TableCell>
-                <TableCell>{getProductName(list.product)}</TableCell>
-                <TableCell>{list.price}</TableCell>
-                <TableCell>{list.quantity}</TableCell>
-                <TableCell>{list.subTotal}</TableCell>
-              </TableRow>)
-            })
+           lineItems.length >0 ? ( lineItems.map((list,index)=>{
+            return(<TableRow key={list._id}>
+              <TableCell>{index+1}</TableCell>
+              <TableCell>{getProductName(list.product)}</TableCell>
+              <TableCell>{list.price}</TableCell>
+              <TableCell>{list.quantity}</TableCell>
+              <TableCell>{list.subTotal}</TableCell>
+            </TableRow>)
+          })):(<TableRow>
+            <TableCell>No items ordered</TableCell>
+          </TableRow>)
           }
         </TableBody>
         <TableFooter>
