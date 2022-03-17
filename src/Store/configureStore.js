@@ -12,7 +12,7 @@ import loginReducer from "../Reducers/loginReducer";
 const configureStore = ()=>{
     const store = createStore(combineReducers({
         bills: billsReducer,
-        customer: customerReducer,
+        customers: customerReducer,
         user: userReducer,
         login : loginReducer,
         product:productReducer

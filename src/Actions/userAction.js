@@ -20,8 +20,15 @@ export const setUser = (data)=>{
 
 export const asyncGetUser = ()=>{
 
-  console.log('config in user',config)
+ 
+  const token = localStorage.getItem('token');
 
+const config = {
+    headers:{
+        Authorization : `Bearer ${token}`
+    }
+}
+console.log('config in user',config)
     return (dispatch)=>{
         axios.get(url,config).then(response=>{
             const data = response.data;

@@ -55,6 +55,7 @@ export const asyncAddBill =(data,history) =>{
         axios.post(url,data,config).then(response =>{
             const data = response.data;
             dispatch(addBills(data));
+            console.log('bill added',data)
             history.push(`/bills/${data._id}`)
         }).catch(err=>alert(err.message))
     }
@@ -84,9 +85,18 @@ export const asyncGetBillDetails = (id, handleChange) =>{
             }
         }
 
-        axios.get(`${url}/${id}`, config).then(response =>{
-            const data = response.data;
-            handleChange(data);
-        }).catch(err=>alert(err.message))
+        // axios.get(`${url}/${id}`, config).then(response =>{
+        //     const data = response.data;
+        //         console.log('response in getBillDetails',data)
+        //     handleChange(data);
+        // }).catch(err=>alert(err.message))
+        axios.get(`${url}/${id}`, config)
+            .then(response => {
+                const data = response.data;
+                console.log('data in asyncGetBillDetails',data);
+                handleChange(data)
+            })
+            .catch(err => alert(err.message))
+
     }
-}
+}   
