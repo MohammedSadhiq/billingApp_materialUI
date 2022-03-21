@@ -1,14 +1,16 @@
-import React from 'react';
+import React,{memo} from 'react';
 import {Box, Container, Typography} from '@material-ui/core'
 
 function OrderDetails(props) {
 
-  const {lineItems }= props;
+  const {lineItems,getTotal }= props;
 
   const calculateTotal = (data)=>{
       let total =0;
 
       data.forEach(item=>total=total+item.subTotal);
+
+      getTotal(total);
 
       return total
   }
@@ -32,4 +34,4 @@ function OrderDetails(props) {
   )
 }
 
-export default OrderDetails
+export default memo(OrderDetails);
