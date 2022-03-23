@@ -1,56 +1,62 @@
-import React, { useEffect } from 'react'
-import { Route, withRouter } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { setLogin } from '../../action/loginAction'
-import HomePage from '../HomePage/HomePage'
-import LoginRegisterPage from '../HomePage/LoginRegisterPage'
-import Drawer from './Drawer'
-import AppBar from './AppBar'
-import UserPage from '../UserPage/UserPage'
-import CustomerPage from '../CustomerPage/CustomerPage'
-import ProductPage from '../ProductPage/ProductPage'
-import BillsPage from '../BillsPage/BillsPage'
-import AddBill from '../BillsPage/Generate New Bill/AddBill'
-import ViewCustomer from '../CustomerPage/View Customer/ViewCustomer'
-import BillView from '../BillsPage/View Bill/BillView'
-import Dashboard from '../Dashboard/Dashboard'
+import React, { useEffect } from 'react';
+import {Route,withRouter,Redirect,Switch} from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux'
+import { setLogin } from '../../Actions/loginAction';
+import Appbar from './Appbar';
+import Drawer from './Drawer';
+import HomePage from '../HomePage/HomePage';
+import LoginRegisterPage from '../HomePage/LoginRegisterPage';
 import PrivateRoute from './PrivateRoute'
+import BillsPage from '../BillsPage/BillsPage';
+import BillView from '../BillsPage/viewBill/BillView';
+import AddBill from '../BillsPage/generateBill/AddBill';
+import UserPage from '../userPage/UserPage';
 
-const NavBar = (props) => {
-    const isLoggedIn = useSelector(state => state.login)
-    const dispatch = useDispatch()
+import ProductPage from '../ProductPage/ProductPage';
+import CustomerPage from '../customerPage/CustomerPage';
+import ViewCustomer from '../customerPage/ViewCustomer/ViewCustomer';
+import Dashboard from '../Dashboard/Dashboard';
 
-    useEffect(() => {
-        if(localStorage.getItem('token')){
-            dispatch(setLogin())
-            // props.history.push('/dashboard')
+function Navbar(props) {
+
+    const isLoggedIn = useSelector(state=>state.login);
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+       if(localStorage.getItem('token')){
+           dispatch(setLogin())
+       }
+    },[dispatch,props.history,isLoggedIn])
+
+  return (
+    <div>
+        {
+            isLoggedIn ? (<Drawer/>):(<Appbar/>)
         }
-    }, [dispatch, props.history, isLoggedIn])
+       
+        <Route path='/' 
+        render = {(props)=>{return isLoggedIn ?   <Redirect to='/dashboard' /> : <HomePage/>}}
+         exact={true}/>
+        <Route path ='/faq'/>
+        <Route path ='/login-or-register' 
+        render = {(props)=>{return isLoggedIn ?   <Redirect to='/user' /> : <LoginRegisterPage {...props}/>}}
+        />
+       
+       <PrivateRoute path='/bills' component={BillsPage} exact={true} />
+       <PrivateRoute path='/bills/:id' component={BillView} exact={true}/>
+       <PrivateRoute path='/addBill' component={AddBill} exact={true} />
 
-    return(
-        <div>
-            {
-                isLoggedIn ? (
-                    <Drawer />
-                ) : (
-                    <AppBar />
-                )
-            }
 
-            <Route path='/' component={HomePage} exact={true} />
-            <Route path='/faq' />
-            <Route path='/login-or-register' component={LoginRegisterPage} />
+      
+        <PrivateRoute path='/products' component={ProductPage} exact={true} />
 
-            <PrivateRoute path='/user' component={UserPage} exact={true} />
-            <PrivateRoute path='/customers' component={CustomerPage} exact={true} />
-            <PrivateRoute path='/products' component={ProductPage} exact={true} />
-            <PrivateRoute path='/bills' component={BillsPage} exact={true} />
-            <PrivateRoute path='/addBill' component={AddBill} exact={true} />
-            <PrivateRoute path='/customers/:id' component={ViewCustomer} exact={true} />
-            <PrivateRoute path='/bills/:id' component={BillView} exact={true} />
-            <PrivateRoute path='/dashboard' component={Dashboard} exact={true} />
-        </div>
-    )
+        <PrivateRoute path='/customers' component = {CustomerPage} exact={true} />
+        <PrivateRoute path='/customers/:id' component={ViewCustomer} exact={true} />
+        
+        <PrivateRoute path='/user' component={UserPage} exact={true}/>
+        <PrivateRoute path='/dashboard' component ={Dashboard} exact={true} />
+    </div>
+  )
 }
 
-export default withRouter(NavBar)
+export default withRouter(Navbar)
