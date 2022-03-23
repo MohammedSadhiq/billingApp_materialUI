@@ -1,22 +1,19 @@
-import { createStore } from "redux";
-import { combineReducers } from "redux";
-import { applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-import billsReducer from "../Reducers/billsReducer";
-import customerReducer from "../Reducers/customerReducer";
-import productReducer from "../Reducers/productReducer";
-import userReducer from "../Reducers/userReducer";
-import loginReducer from "../Reducers/loginReducer";
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import customerReducer from '../reducer/customerReducer'
+import loginReducer from '../reducer/loginReducer'
+import productReducer from '../reducer/productReducer'
+import userReducer from '../reducer/userReducer'
+import billsReducer from '../reducer/billsReducer'
 
-
-const configureStore = ()=>{
+const configureStore = () => {
     const store = createStore(combineReducers({
-        bills: billsReducer,
-        customers: customerReducer,
+        login: loginReducer,
         user: userReducer,
-        login : loginReducer,
-        product:productReducer
-    }),applyMiddleware(thunk))
+        customers: customerReducer, 
+        products: productReducer,
+        bills: billsReducer
+    }), applyMiddleware(thunk))
     return store
 }
 
