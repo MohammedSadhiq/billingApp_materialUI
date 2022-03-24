@@ -115,7 +115,7 @@ function SummaryOfBill(props) {
                     alert(response.razorpay_payment_id);
                     // alert(response.razorpay_order_id);
                     // alert(response.razorpay_signature)
-                    dispatch(asyncAddBill(billData,props.history))
+            dispatch(asyncAddBill(billData,props.history))
                 },
                 prefill: {
                     name: customerInfo.name,
